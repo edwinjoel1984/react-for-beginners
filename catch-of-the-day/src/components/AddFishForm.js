@@ -15,6 +15,8 @@ export default class AddFishForm extends React.Component{
             desc: this.descRef.value.value,
             image: this.imageRef.value.value
         }
+        this.props.addFish(fish);
+        event.currentTarget.reset();
         console.log(fish);
     };
 
