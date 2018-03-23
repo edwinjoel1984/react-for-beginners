@@ -82,13 +82,19 @@ export default class App extends React.Component{
         return (
             <div className="catch-of-the-day">
                 <div className="menu">
-                    <Header tagline="Fresh SeaFood Market"/>
+                    <Header tagline={this.props.match.params.storeId}/>
                     <ul className="fishes">
                     {Object.keys(this.state.fishes).map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)}
                     </ul>
                 </div>
                 <Order {...this.state} removeFromOrder={this.removeFromOrder}/>
-                <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} fishes={this.state.fishes} updateFish={this.updateFish} deleteFish={this.deleteFish}/>
+                <Inventory 
+                    addFish={this.addFish} 
+                    loadSampleFishes={this.loadSampleFishes} 
+                    fishes={this.state.fishes} 
+                    updateFish={this.updateFish} 
+                    deleteFish={this.deleteFish} 
+                    storeId={this.props.match.params.storeId}/>
             </div>
         );
     }
